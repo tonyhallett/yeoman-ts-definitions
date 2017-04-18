@@ -1,5 +1,8 @@
 {
   "name": "yeoman-ts-definitions",
-  "version": "1.0.3",
-  "license": "MIT"
+  "version": "1.0.4",
+  "license": "MIT",
+  "dependencies": {
+    "@types/inquirer": "0.0.33"
+  }
 }

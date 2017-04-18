@@ -93,7 +93,10 @@ declare class Base extends EventEmitter {
     destinationRoot(rootPath?: string): string;
     determineAppname(): string;
     option(name: string, config: Base.OptionConfig): this;
-    prompt(questions: Questions): Promise<Answers>;
+    //note that the type of Question appears to be a union type of string.  But should be kept to string as the prompt is extensible.
+    //Similarly with interface Answers { [key:string]:any;} has to be any due to custom prompt
+    prompt(questions: Questions): Promise<Answers>;  
+   
     registerTransformStream(stream: {}|Array<{}>): this;
     rootGeneratorName(): string;
     rootGeneratorVersion(): string;
