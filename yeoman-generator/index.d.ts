@@ -30,7 +30,9 @@ declare namespace Base {
         description?: string;
         required?: boolean;
         optional?: boolean;
-        type?: typeof String|typeof Number|typeof Array|typeof Object;//think this could be any function?????
+        //correction
+        type?:Array:(arg:string):any;
+        //type?: typeof String|typeof Number|typeof Array|typeof Object;
         default?: any;
         name?:string/////////////////////additional
     }
@@ -39,7 +41,9 @@ declare namespace Base {
         default?: any;
         description?: string;
         hide?: boolean;
-        type?: typeof Boolean | typeof String | typeof Number;
+        //correction
+        type?: (opt:any):any
+        //type?: typeof Boolean | typeof String | typeof Number;
         name?: string;//////////////additional
     }
     interface MemFsEditor {
@@ -56,7 +60,7 @@ declare namespace Base {
         commit(callback: Callback): void;
         commit(filters: any[], callback: Callback): void;
     }
-    interface ObjectAny {
+    interface ObjectAny extends Object {
         [key: string]: any;
     }
     interface OptionConfigObject {
@@ -70,8 +74,8 @@ declare class Base extends EventEmitter {
     constructor(args: string|string[], options: Base.ObjectAny);/////////////////////////
 
     env: {};
-    args: {};
-    arguments: {};///////////////////additional
+    args: Array<any>;//corrected
+    arguments: Array<any>;///////////////////additional
     _arguments: Base.ArgumentConfig[];/////////////////additional
     _options: Base.OptionConfigObject;///////////////////additional
 
