@@ -8,6 +8,7 @@ import { Questions, Answers } from 'inquirer';
 
 declare type Callback = (err: any) => void;
 
+
 declare namespace Base {
     class Storage {
         constructor(name: string, fs: MemFsEditor, configPath: string);
@@ -26,12 +27,14 @@ declare namespace Base {
         skipMessage?: boolean;
         callback?: Callback;
     }
+    type ArgTypeCallback = (arg: string) => any;
+
     interface ArgumentConfig {
         description?: string;
         required?: boolean;
         optional?: boolean;
         //correction
-        type?:Array:(arg:string):any;
+        type?: Array<string> | ArgTypeCallback;
         //type?: typeof String|typeof Number|typeof Array|typeof Object;
         default?: any;
         name?:string/////////////////////additional
@@ -42,7 +45,7 @@ declare namespace Base {
         description?: string;
         hide?: boolean;
         //correction
-        type?: (opt:any):any
+        type?: (opt:any)=>any
         //type?: typeof Boolean | typeof String | typeof Number;
         name?: string;//////////////additional
     }
