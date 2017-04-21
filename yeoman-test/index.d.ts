@@ -1,5 +1,5 @@
-﻿import * as Base from 'yeoman-generator'
-import * as Environment from '../yeoman-environment/index'
+﻿import * as Base from '../yeoman-generator'
+import * as Environment from '../yeoman-environment'
 import * as RunContext from './run-context';
 import { EventEmitter } from 'events';
 
@@ -10,10 +10,8 @@ declare namespace yeomantest {
     interface MockAnswer {
         [key: string]: string
     }
-    interface GeneratorConstructor {
-        new (args: Array<string> | string, options: {}): Base
-    }
-    type GeneratorCtorAndName = [GeneratorConstructor, string];
+    
+    type GeneratorCtorAndName = [Base.GeneratorConstructor, string];
     type RegistrationType = string | GeneratorCtorAndName
     /**
      * Create a function that will clean up the test directory,
@@ -115,7 +113,7 @@ declare namespace yeomantest {
     export function registerDependencies(env: Environment, dependencies: [RegistrationType]): void
 
     
-    export function run(Generator: string | GeneratorConstructor, settings?: {}): RunContext
+    export function run(Generator: string | Base.GeneratorConstructor, settings?: {}): RunContext
 
 
 

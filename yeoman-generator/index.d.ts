@@ -3,13 +3,17 @@
 // Definitions by: Kentaro Okuno <http://github.com/armorik83>, Jay Anslow <http://github.com/janslow>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
+
 import { EventEmitter } from 'events';
 import { Questions, Answers } from 'inquirer';
-
+import * as Environment from '../yeoman-environment';
 declare type Callback = (err: any) => void;
 
 
 declare namespace Base {
+    interface GeneratorConstructor {
+        new (args: string | string[], options: Base.ObjectAny): Base
+    }
     class Storage {
         constructor(name: string, fs: MemFsEditor, configPath: string);
 
@@ -76,7 +80,7 @@ declare class Base extends EventEmitter {
 
     constructor(args: string|string[], options: Base.ObjectAny);/////////////////////////
 
-    env: {};
+    env: Environment;
     args: Array<any>;//corrected
     arguments: Array<any>;///////////////////additional
     _arguments: Base.ArgumentConfig[];/////////////////additional

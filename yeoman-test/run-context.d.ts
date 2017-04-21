@@ -1,7 +1,7 @@
 ﻿import { EventEmitter } from 'events';
-import { GeneratorConstructor, MockAnswer, RegistrationType } from './index'
-//******************* think that this should export types that is used by the helpers as well - withGenerators
-//********************* or a common .d.ts ?
+import * as Base from '../yeoman-generator';
+import { MockAnswer, RegistrationType } from './index'
+
 declare namespace RunContext {
     
 }
@@ -17,7 +17,7 @@ declare namespace RunContext {
  * @return {this}
  */
 declare class RunContext extends EventEmitter {
-    constructor(generator: string | GeneratorConstructor, settings: {})
+    constructor(generator: string | Base.GeneratorConstructor, settings: {})
     /**
      * Hold the execution until the returned callback is triggered
      * @return {Function} Callback to notify the normal execution can resume
